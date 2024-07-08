@@ -1,11 +1,15 @@
 import './App.css'
+import {ToastContainer} from "react-toastify";
+import {Outlet} from "react-router-dom";
 
 function App() {
 
 
   return (
     <>
-      <h1>Work</h1>
+        <h1>NavBar</h1>
+            <ToastContainer />
+            <Outlet />
     </>
   )
 }
