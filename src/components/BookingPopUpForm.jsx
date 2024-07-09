@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { createBooking, updateBooking } from "../apiHooks/useHooks.js";
+import { createBooking, updateBooking } from "../apiHooks/ApiHooks.js";
 
 const BookingPopUpForm = ({ isOpen, onClose, booking, refreshBookings, userId }) => {
     const [formData, setFormData] = useState({

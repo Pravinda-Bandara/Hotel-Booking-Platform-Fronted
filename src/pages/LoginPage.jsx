@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Store} from "../Store.jsx";
-import {login} from "../apiHooks/useHooks.js";
+import {login} from "../apiHooks/ApiHooks.js";
 import {getError} from "../utils/errorUtils.js";
 import {toast} from "react-toastify";
 import InputFieldComponent from "../components/inputFieldComponent.jsx";
