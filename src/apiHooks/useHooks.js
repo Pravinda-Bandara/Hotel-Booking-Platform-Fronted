@@ -44,3 +44,11 @@ export const updateBooking = async (bookingId, bookingData) => {
         throw new Error(error.response?.data?.message || 'Error updating booking');
     }
 };
+export const deleteBooking = async (bookingId) => {
+    try {
+        const response = await apiClient.delete(`api/v1/bookings/${bookingId}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Error deleting booking');
+    }
+};

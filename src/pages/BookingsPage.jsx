@@ -1,11 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { getUserBookings } from "../apiHooks/useHooks.js";
+import { getUserBookings, deleteBooking } from "../apiHooks/useHooks.js";
 import { toast } from "react-toastify";
 import { Store } from '../Store.jsx';
 import { PencilIcon, TrashIcon } from "@heroicons/react/16/solid/index.js";
 import BookingPopUpForm from "../components/BookingPopUpForm.jsx";
-
 
 export function BookingsPage() {
     const { userId } = useParams();
@@ -38,12 +37,11 @@ export function BookingsPage() {
     }, [userId, userInfo, navigate]);
 
     const handleDelete = async (bookingId) => {
-        // Commented out for safety
-        /*
         try {
             await deleteBooking(bookingId);
             // Refresh bookings after deletion
             const data = await getUserBookings(userId);
+            data.sort((a, b) => new Date(a.checkInDateTime) - new Date(b.checkInDateTime));
             setBookings(data);
             toast.success('Booking deleted successfully', {
                 autoClose: 1000
@@ -53,7 +51,6 @@ export function BookingsPage() {
                 autoClose: 1000
             });
         }
-        */
     };
 
     const openForm = (booking = null) => {
@@ -118,7 +115,7 @@ export function BookingsPage() {
                             <td className="py-2 px-4 border">{booking.guestPhoneNumber}</td>
                             <td className="py-2 px-4 border">{booking.status}</td>
                             <td className="py-2 px-4 border">
-                                <div className="flex space-x-2 text-center">
+                                <div className="flex space-x-2 text-center flex justify-center">
                                     <button
                                         className="bg-blue-500 text-white px-4 py-1 rounded-md flex items-center hover:bg-blue-700"
                                         onClick={() => openForm(booking)}
