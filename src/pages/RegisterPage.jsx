@@ -5,7 +5,6 @@ import {getError} from "../utils/errorUtils.js";
 import apiClient from "../apiClient.js";
 import InputFieldComponent from "../components/inputFieldComponent.jsx";
 import {Store} from "../Store.jsx";
-import {register} from "../apiHooks/useHooks.js";
 
 export  function RegisterPage() {
     const [email, setEmail] = useState('');
@@ -41,7 +40,7 @@ export  function RegisterPage() {
 
     const registerUser = async ({ email, password }) => {
         try {
-            const response = await register({ email, password });
+            const response = await apiClient.post('api/v1/users/signup', { email, password });
             return response.data;
         } catch (error) {
             throw new Error(error.response?.data?.message || 'Error registering');
