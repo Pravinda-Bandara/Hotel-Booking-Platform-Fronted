@@ -7,6 +7,7 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 import {RegisterPage} from "./pages/RegisterPage.jsx";
 import {LoginPage} from "./pages/LoginPage.jsx";
 import {BookingsPage} from "./pages/BookingsPage.jsx";
+import ProtectedRoute from "./routeGuard/ProtectedRoute.jsx";
 
 
 
@@ -16,12 +17,11 @@ const router = createBrowserRouter(
             <Route index element={<LoginPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
-            <Route path="booking/:userId" element={<BookingsPage />} />
 
-            {/*<Route element={<ProtectedRoute />}>
-                <Route path="courses" element={<CoursesPage />} />
-                <Route path="courses/:studentId/:courseId" element={<CourseDetailsPage1 />} />
-            </Route>*/}
+
+            <Route element={<ProtectedRoute />}>
+                <Route path="booking/:userId" element={<BookingsPage />} />
+            </Route>
 
         </Route>
     )
