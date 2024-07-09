@@ -1,6 +1,7 @@
 import './App.css'
-import {ToastContainer} from "react-toastify";
 import {Outlet} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 

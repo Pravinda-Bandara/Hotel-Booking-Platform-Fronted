@@ -17,3 +17,12 @@ export const register = async ({ email, password }) => {
         throw new Error(error.response?.data?.message || 'Error registering');
     }
 };
+
+export const getUserBookings = async (userId) => {
+    try {
+        const response = await apiClient.get(`api/v1/bookings/user/${userId}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Error fetching bookings');
+    }
+};

@@ -22,7 +22,6 @@ export function LoginPage() {
         setIsPending(true);
         try {
             const data = await login({ email, password });
-            navigate(redirect);
             dispatch({ type: 'USER_SIGNIN', payload: data });
             localStorage.setItem('userInfo', JSON.stringify(data));
         } catch (err) {
@@ -33,10 +32,10 @@ export function LoginPage() {
     };
 
     useEffect(() => {
-        if (userInfo) {
-            navigate(redirect);
+        if (userInfo && userInfo._id) {
+            navigate(`/booking/${userInfo._id}`);
         }
-    }, [userInfo, navigate, redirect]);
+    }, [userInfo, navigate]);
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-800">

@@ -22,7 +22,6 @@ export  function RegisterPage() {
 
         try {
             const data = await registerUser({ email, password });
-            navigate('/courses');
             dispatch({ type: 'USER_SIGNIN', payload: data });
             localStorage.setItem('userInfo', JSON.stringify(data));
         } catch (err) {
@@ -33,10 +32,10 @@ export  function RegisterPage() {
     };
 
     useEffect(() => {
-        if (userInfo) {
-            navigate(redirect);
+        if (userInfo && userInfo._id) {
+            navigate(`/booking/${userInfo._id}`);
         }
-    }, [userInfo]);
+    }, [userInfo, navigate]);
 
     const registerUser = async ({ email, password }) => {
         try {
