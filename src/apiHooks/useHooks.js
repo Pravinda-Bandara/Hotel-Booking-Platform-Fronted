@@ -26,3 +26,21 @@ export const getUserBookings = async (userId) => {
         throw new Error(error.response?.data?.message || 'Error fetching bookings');
     }
 };
+
+export const createBooking = async (bookingData) => {
+    try {
+        const response = await apiClient.post('api/v1/bookings/', bookingData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Error creating booking');
+    }
+};
+
+export const updateBooking = async (bookingId, bookingData) => {
+    try {
+        const response = await apiClient.patch(`api/v1/bookings/${bookingId}`, bookingData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Error updating booking');
+    }
+};
