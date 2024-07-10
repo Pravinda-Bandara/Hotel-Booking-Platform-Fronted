@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+Grund:wght@100..400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
 @layer components {
     .custom-button {
         @apply px-6 w-1/5 my-10 py-2 rounded bg-customBlue text-white border rounded-2xl border-white hover:bg-white hover:text-customBlue hover:border-customBlue;
@@ -27,7 +31,10 @@
 }
 
 :root{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    font-family: "Playwrite DE Grund", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 td{
     text-align: center;

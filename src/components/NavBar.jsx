@@ -25,7 +25,7 @@ export default function NavBar() {
                 </div>
                 <div className="flex items-center space-x-4">
                         <>
-                            <span className="text-white">{userInfo.email}</span>
+                            <span className="text-white hidden sm:inline">{userInfo.email}</span>
                             <button
                                 onClick={handleLogout}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700"

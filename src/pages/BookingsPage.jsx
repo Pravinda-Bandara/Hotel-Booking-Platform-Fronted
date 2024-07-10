@@ -75,7 +75,7 @@ export function BookingsPage() {
     const getStatusClass = (status) => {
         switch (status.toLowerCase()) {
             case 'confirmed':
-                return 'text-lime-500';
+                return 'text-lime-600';
             case 'pending':
                 return 'text-amber-500';
             case 'cancelled':
@@ -87,8 +87,8 @@ export function BookingsPage() {
 
     return (
         <div className="container mx-auto pt-4">
-            <div className="flex w-full justify-between items-center mb-4">
-                <h1 className="text-3xl font-bold text-white">Your Bookings</h1>
+            <div className="flex w-full justify-between items-center mb-4 px-2 sm:px-0">
+                <h1 className="text-3xl font-bold text-white ">Your Bookings</h1>
                 <button
                     className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700"
                     onClick={() => openForm()}
@@ -101,40 +101,40 @@ export function BookingsPage() {
                     <table className="min-w-full w-full bg-white rounded-lg shadow-lg">
                         <thead>
                         <tr className="bg-gray-100">
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Hotel Name</th>
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Check-in</th>
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600 hidden lg:table-cell">Check-out</th>
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Guest Name</th>
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600 hidden md:table-cell">Phone Number</th>
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Status</th>
-                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Actions</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Hotel Name</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Check-in</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600 hidden lg:table-cell">Check-out</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Guest Name</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600 hidden md:table-cell">Phone Number</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Status</th>
+                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         {bookings.map((booking) => (
                             <tr key={booking._id} className="hover:bg-gray-200 transition duration-300 ease-in-out transform">
-                                <td className="py-1 px-3 border-t border-gray-200">{booking.hotelName}</td>
-                                <td className="py-1 px-3 border-t border-gray-200">
+                                <td className="py-1 px-2 border-t border-gray-200">{booking.hotelName}</td>
+                                <td className="py-1 px-2 border-t border-gray-200 text-xs">
                                     <div>{new Date(booking.checkInDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(booking.checkInDateTime).toLocaleTimeString()}</div>
                                 </td>
-                                <td className="py-1 px-3 border-t border-gray-200 hidden lg:table-cell">
+                                <td className="py-1 px-2 border-t border-gray-200 hidden lg:table-cell text-xs">
                                     <div>{new Date(booking.checkOutDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(booking.checkOutDateTime).toLocaleTimeString()}</div>
                                 </td>
-                                <td className="py-1 px-3 border-t border-gray-200">{booking.guestName}</td>
-                                <td className="py-1 px-3 border-t border-gray-200 hidden md:table-cell">{booking.guestPhoneNumber}</td>
-                                <td className={`py-1 px-3 border-t border-gray-200 ${getStatusClass(booking.status)}`}>{booking.status}</td>
-                                <td className="py-1 px-3 border-t border-gray-200">
+                                <td className="py-1 px-2 border-t border-gray-200">{booking.guestName}</td>
+                                <td className="py-1 px-2 border-t border-gray-200 hidden md:table-cell">{booking.guestPhoneNumber}</td>
+                                <td className={`py-1 px-2 border-t border-gray-200 ${getStatusClass(booking.status)}`}>{booking.status}</td>
+                                <td className="py-1 px-2 border-t border-gray-200">
                                     <div className="flex space-x-2 justify-center items-center">
                                         <button
-                                            className="bg-blue-500 text-white p-2 pt-3 rounded-md hover:bg-blue-700"
+                                            className="bg-blue-500 text-white p-2 pt-2 rounded-md hover:bg-blue-700"
                                             onClick={() => openForm(booking)}
                                         >
                                             <i className="bi bi-pencil"></i>
                                         </button>
                                         <button
-                                            className="bg-red-500 text-white p-2 pt-3 rounded-md hover:bg-red-700"
+                                            className="bg-red-500 text-white p-2 pt-2 rounded-md hover:bg-red-700"
                                             onClick={() => handleDelete(booking._id)}
                                         >
                                             <i className="bi bi-trash"></i>
@@ -147,7 +147,7 @@ export function BookingsPage() {
                     </table>
                 </div>
             ) : (
-                <p>No bookings found</p>
+                <p className="text-white font-bold">No bookings found</p>
             )}
             <BookingPopUpForm
                 isOpen={isFormOpen}
