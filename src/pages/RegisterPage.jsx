@@ -1,12 +1,13 @@
-import {useContext, useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
-import {getError} from "../utils/errorUtils.js";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { getError } from "../utils/errorUtils.js";
 import apiClient from "../apiClient.js";
 import InputFieldComponent from "../components/inputFieldComponent.jsx";
-import {Store} from "../Store.jsx";
+import { Store } from "../Store.jsx";
+import { RegisterValidationUtil } from "../utils/validationUtil.jsx";
 
-export  function RegisterPage() {
+export function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,20 +15,21 @@ export  function RegisterPage() {
     const { state, dispatch } = useContext(Store);
     const { userInfo } = state;
     const navigate = useNavigate();
-    const redirect = '/bookings';
 
     const handleRegister = async (event) => {
         event.preventDefault();
 
+        if (!RegisterValidationUtil(email, password, confirmPassword)) {
+            return;
+        }
 
         try {
             const data = await registerUser({ email, password });
             dispatch({ type: 'USER_SIGNIN', payload: data });
             localStorage.setItem('userInfo', JSON.stringify(data));
+            navigate(`/booking/${data._id}`);
         } catch (err) {
-            toast.error(getError(err), {
-                autoClose: 1000
-            });
+            toast.error(getError(err), { autoClose: 1000 });
         }
     };
 
@@ -47,8 +49,12 @@ export  function RegisterPage() {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-800">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
+        <div
+            className="flex justify-center items-center h-screen ">
+
+
+            {/* Content */}
+            <div className="relative bg-white p-8 rounded-lg shadow-lg bg-opacity-80">
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">Register Now!</h1>
                 <form onSubmit={handleRegister}>
                     <div className="mb-4">
@@ -78,7 +84,6 @@ export  function RegisterPage() {
                             className="w-full px-4 py-2 border rounded-md"
                         />
                     </div>
-
                     <div className="flex justify-between items-center">
                         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">
                             Register
