@@ -86,9 +86,9 @@ export function BookingsPage() {
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <div className="flex justify-between items-center mb-4">
-                <h1 className="text-3xl font-bold">Your Bookings</h1>
+        <div className="container mx-auto pt-4">
+            <div className="flex w-full justify-between items-center mb-4">
+                <h1 className="text-3xl font-bold text-white">Your Bookings</h1>
                 <button
                     className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700"
                     onClick={() => openForm()}
@@ -97,44 +97,44 @@ export function BookingsPage() {
                 </button>
             </div>
             {bookings.length > 0 ? (
-                <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg ">
+                <div className="overflow-x-auto rounded-lg">
+                    <table className="min-w-full w-full bg-white rounded-lg shadow-lg">
                         <thead>
-                        <tr className="bg-gray-100 ">
-                            <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600">Hotel Name</th>
-                            <th className="py-3 px-4 text-centertext-sm font-semibold text-gray-600">Check-in</th>
-                            <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 hidden xl:table-cell">Check-out</th>
-                            <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 hidden md:table-cell">Guest Name</th>
-                            <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 hidden lg:table-cell">Phone Number</th>
-                            <th className="py-3 px-4 text-centertext-sm font-semibold text-gray-600">Status</th>
-                            <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600">Actions</th>
+                        <tr className="bg-gray-100">
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Hotel Name</th>
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Check-in</th>
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600 hidden lg:table-cell">Check-out</th>
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Guest Name</th>
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600 hidden md:table-cell">Phone Number</th>
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Status</th>
+                            <th className="py-1 px-3 text-center text-sm font-semibold text-gray-600">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         {bookings.map((booking) => (
-                            <tr key={booking._id} className="hover:bg-gray-100">
-                                <td className="py-3 px-4 border-t border-gray-200">{booking.hotelName}</td>
-                                <td className="py-3 px-4 border-t border-gray-200">
+                            <tr key={booking._id} className="hover:bg-gray-200 transition duration-300 ease-in-out transform">
+                                <td className="py-1 px-3 border-t border-gray-200">{booking.hotelName}</td>
+                                <td className="py-1 px-3 border-t border-gray-200">
                                     <div>{new Date(booking.checkInDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(booking.checkInDateTime).toLocaleTimeString()}</div>
                                 </td>
-                                <td className="py-3 px-4 border-t border-gray-200 hidden xl:table-cell">
+                                <td className="py-1 px-3 border-t border-gray-200 hidden lg:table-cell">
                                     <div>{new Date(booking.checkOutDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(booking.checkOutDateTime).toLocaleTimeString()}</div>
                                 </td>
-                                <td className="py-3 px-4 border-t border-gray-200 hidden md:table-cell">{booking.guestName}</td>
-                                <td className="py-3 px-4 border-t border-gray-200 hidden lg:table-cell">{booking.guestPhoneNumber}</td>
-                                <td className={`py-3 px-4 border-t border-gray-200 ${getStatusClass(booking.status)}`}>{booking.status}</td>
-                                <td className="py-3 px-4 border-t border-gray-200">
+                                <td className="py-1 px-3 border-t border-gray-200">{booking.guestName}</td>
+                                <td className="py-1 px-3 border-t border-gray-200 hidden md:table-cell">{booking.guestPhoneNumber}</td>
+                                <td className={`py-1 px-3 border-t border-gray-200 ${getStatusClass(booking.status)}`}>{booking.status}</td>
+                                <td className="py-1 px-3 border-t border-gray-200">
                                     <div className="flex space-x-2 justify-center items-center">
                                         <button
-                                            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700"
+                                            className="bg-blue-500 text-white p-2 pt-3 rounded-md hover:bg-blue-700"
                                             onClick={() => openForm(booking)}
                                         >
                                             <i className="bi bi-pencil"></i>
                                         </button>
                                         <button
-                                            className="bg-red-500 text-white p-2 rounded-md hover:bg-red-700"
+                                            className="bg-red-500 text-white p-2 pt-3 rounded-md hover:bg-red-700"
                                             onClick={() => handleDelete(booking._id)}
                                         >
                                             <i className="bi bi-trash"></i>

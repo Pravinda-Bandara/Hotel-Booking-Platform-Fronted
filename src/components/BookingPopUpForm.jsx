@@ -90,16 +90,6 @@ const BookingPopUpForm = ({ isOpen, onClose, booking, refreshBookings, userId })
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
-                        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                            <label className="block mb-2 font-semibold">Check-out Date & Time</label>
-                            <input
-                                type="datetime-local"
-                                name="checkOutDateTime"
-                                value={formData.checkOutDateTime}
-                                onChange={handleChange}
-                                className="w-full border px-3 py-2 rounded-md"
-                            />
-                        </div>
                         <div className="w-full md:w-1/2 px-3">
                             <label className="block mb-2 font-semibold">Check-in Date & Time</label>
                             <input
@@ -110,6 +100,17 @@ const BookingPopUpForm = ({ isOpen, onClose, booking, refreshBookings, userId })
                                 className="w-full border px-3 py-2 rounded-md"
                             />
                         </div>
+                        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <label className="block mb-2 font-semibold">Check-out Date & Time</label>
+                            <input
+                                type="datetime-local"
+                                name="checkOutDateTime"
+                                value={formData.checkOutDateTime}
+                                onChange={handleChange}
+                                className="w-full border px-3 py-2 rounded-md"
+                            />
+                        </div>
+
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">

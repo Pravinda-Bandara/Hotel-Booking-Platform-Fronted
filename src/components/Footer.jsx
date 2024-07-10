@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
     return (
         <footer className="bg-gray-800 text-white py-6">
-            <div className="container mx-auto w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px] flex flex-wrap justify-between items-center">
+            <div className="container mx-auto w-full  flex flex-wrap justify-between items-center">
                 <div className="text-sm w-full md:w-auto text-center md:text-left mb-4 md:mb-0">
                     &copy; {new Date().getFullYear()} Hotel Booking App. All rights reserved.
                 </div>
