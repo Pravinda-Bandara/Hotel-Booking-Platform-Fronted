@@ -1,39 +1,30 @@
-# Course Management System
+# Hotel Booking Platform
 
 ## Version
 0.1.0
 
 ## Introduction
 
-Welcome to our Course Management System! This platform allows visitors to register and log in, after which they can explore and enroll in courses. Users can view course details and enroll in subjects of their choice. Admin users have additional privileges to manage users, courses, and student enrollments. Our backend, powered by the MERN stack (MongoDB, Express.js, React.js, Node.js), efficiently handles HTTP requests, user authentication using JWT (JSON Web Tokens), and database interactions.
+Welcome to our Hotel Booking Platform! This platform allows users to register and log in securely using JWT (JSON Web Tokens). Once logged in, users can manage their bookings with a user-friendly interface. The backend, powered by the MERN stack (MongoDB, Express.js, React.js, Node.js), efficiently handles HTTP requests, user authentication, and database interactions.
 
 ### Features
 
 #### User Features
-- **User Authentication:** Visitors can securely register and log in.
-- **Course Exploration:** Users can view course details and enroll in subjects.
-- **Admin Privileges:** Admin users can perform CRUD operations on users, courses, and manage student enrollments.
+- **User Authentication:** Users can securely register and log in.
+- **Booking Management:** Users can create, read, update, and delete bookings.
+- **Responsive Design:** The application is responsive and optimized for both desktop and mobile devices.
 
 ### Preview
-#### Visitor Routes
-<div>
-  <img src="./screenshots/user3.png" alt="Visitor Screenshot 1" >
-  <img src="./screenshots/user4.png" alt="Visitor Screenshot 2" >
-</div>
+#### Registration and Login Screenshots
+![Registration Screenshot](./screenshots/1.png)
+![Login Screenshot](./screenshots/2.png)
 
-#### User Routes
-<div>
-  <img src="./screenshots/user1.png" alt="User Screenshot 1" >
-  <img src="./screenshots/user2.png" alt="User Screenshot 2" >
-</div>
-
-#### Admin Routes
-<div>
-  <img src="./screenshots/admin0.png" alt="Admin Screenshot 1" >
-  <img src="./screenshots/admin2.png" alt="Admin Screenshot 3" >
-  <img src="./screenshots/admin3.png" alt="Admin Screenshot 4" >
-    <img src="./screenshots/admin1.png" alt="Admin Screenshot 2" >
-</div>
+#### Booking Management Screenshots
+![Booking Management 1](./screenshots/3.png)
+![Booking Management 2](./screenshots/4.png)
+![Booking Management 2](./screenshots/5.png)
+#### On  mobile devices
+![Booking Management 2](./screenshots/6.png)
 
 ### Frontend Technologies Used
 
@@ -57,4 +48,3 @@ This project and its associated images are used for educational and learning pur
 
 Copyright &copy; 2024 Pravinda. All Rights Reserved <br>
 This project is licensed under the [MIT License](LICENSE.txt).
-
