@@ -4,6 +4,7 @@ import { getUserBookings, deleteBooking } from "../apiHooks/ApiHooks.js";
 import { toast } from "react-toastify";
 import { Store } from '../Store.jsx';
 import BookingPopUpForm from "../components/BookingPopUpForm.jsx";
+import {getStatusClass} from "../utils/getStatusClass.js";
 
 export function BookingsPage() {
     const { userId } = useParams();
@@ -72,18 +73,7 @@ export function BookingsPage() {
         }
     };
 
-    const getStatusClass = (status) => {
-        switch (status.toLowerCase()) {
-            case 'confirmed':
-                return 'text-lime-600';
-            case 'pending':
-                return 'text-amber-500';
-            case 'cancelled':
-                return 'text-red-500';
-            default:
-                return 'text-gray-800';
-        }
-    };
+
 
     return (
         <div className="container mx-auto pt-4">
@@ -101,31 +91,31 @@ export function BookingsPage() {
                     <table className="min-w-full w-full bg-white rounded-lg shadow-lg">
                         <thead>
                         <tr className="bg-gray-100">
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Hotel Name</th>
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Check-in</th>
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600 hidden lg:table-cell">Check-out</th>
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Guest Name</th>
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600 hidden md:table-cell">Phone Number</th>
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Status</th>
-                            <th className="py-1 px-2 text-center text-sm font-semibold text-gray-600">Actions</th>
+                            <th className="booking-th">Hotel Name</th>
+                            <th className="booking-th">Check-in</th>
+                            <th className="booking-th hidden lg:table-cell">Check-out</th>
+                            <th className="booking-th">Guest Name</th>
+                            <th className="booking-th hidden md:table-cell">Phone Number</th>
+                            <th className="booking-th">Status</th>
+                            <th className="booking-th">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         {bookings.map((booking) => (
                             <tr key={booking._id} className="hover:bg-gray-200 transition duration-300 ease-in-out transform">
-                                <td className="py-1 px-2 border-t border-gray-200">{booking.hotelName}</td>
-                                <td className="py-1 px-2 border-t border-gray-200 text-xs">
+                                <td className="booking-td">{booking.hotelName}</td>
+                                <td className="booking-td text-xs">
                                     <div>{new Date(booking.checkInDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(booking.checkInDateTime).toLocaleTimeString()}</div>
                                 </td>
-                                <td className="py-1 px-2 border-t border-gray-200 hidden lg:table-cell text-xs">
+                                <td className="booking-td hidden lg:table-cell text-xs">
                                     <div>{new Date(booking.checkOutDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(booking.checkOutDateTime).toLocaleTimeString()}</div>
                                 </td>
-                                <td className="py-1 px-2 border-t border-gray-200">{booking.guestName}</td>
-                                <td className="py-1 px-2 border-t border-gray-200 hidden md:table-cell">{booking.guestPhoneNumber}</td>
-                                <td className={`py-1 px-2 border-t border-gray-200 ${getStatusClass(booking.status)}`}>{booking.status}</td>
-                                <td className="py-1 px-2 border-t border-gray-200">
+                                <td className="booking-td">{booking.guestName}</td>
+                                <td className="booking-td hidden md:table-cell">{booking.guestPhoneNumber}</td>
+                                <td className={`booking-td ${getStatusClass(booking.status)}`}>{booking.status}</td>
+                                <td className="booking-td">
                                     <div className="flex space-x-2 justify-center items-center">
                                         <button
                                             className="bg-blue-500 text-white p-2 pt-2 rounded-md hover:bg-blue-700"
