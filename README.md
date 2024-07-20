@@ -3,8 +3,10 @@
 ## Version
 0.1.0
 
-## Introduction
 
+## Back-end  -  https://github.com/Pravinda-Bandara/Hotel-Booking-Platform-Backend
+
+## Introduction
 Welcome to our Hotel Booking Platform! This platform allows users to register and log in securely using JWT (JSON Web Tokens). Once logged in, users can manage their bookings with a user-friendly interface. The backend, powered by the MERN stack (MongoDB, Express.js, React.js, Node.js), efficiently handles HTTP requests, user authentication, and database interactions.
 
 ### Features
